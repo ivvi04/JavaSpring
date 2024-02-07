@@ -31,7 +31,3 @@
 - @PostMapping("/user-update")
 - User update(User user)
 - User getOne(int id)
-
-## Урок 3. Использование Spring для разработки серверного приложения
-
-**[Задание](https://github.com/ivvi04/JavaSpring/tree/master/lesson3)**
