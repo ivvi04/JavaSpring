@@ -1,0 +1,11 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+users:
+  selectUsers: "select * from userTable"
+  selectUserById: "select * from userTable where id = ?"
+  insert: "insert into userTable (firstName, lastName) values (?, ?)"
+  delete: "delete from userTable where id = ?"
+  update: "update userTable set firstName = ?, lastName = ? where id = ?"
