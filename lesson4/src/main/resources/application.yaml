@@ -6,6 +6,6 @@ server:
 users:
   selectUsers: "select * from userTable"
   selectUserById: "select * from userTable where id = ?"
-  insert: "insert into userTable (firstName, lastName) values (?, ?)"
+  insert: "insert into userTable (name, age) values (?, ?)"
   delete: "delete from userTable where id = ?"
-  update: "update userTable set firstName = ?, lastName = ? where id = ?"
+  update: "update userTable set name = ?, age = ? where id = ?"

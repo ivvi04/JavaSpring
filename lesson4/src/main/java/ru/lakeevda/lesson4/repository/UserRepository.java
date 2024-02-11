@@ -1,7 +1,6 @@
 package ru.lakeevda.lesson4.repository;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -20,8 +19,8 @@ public class UserRepository {
         RowMapper<User> userRowMapper = (rs, rowNum) -> {
             User user = new User();
             user.setId(rs.getInt("id"));
-            user.setFirstName(rs.getString("firstName"));
-            user.setLastName(rs.getString("lastName"));
+            user.setName(rs.getString("name"));
+            user.setAge(rs.getInt("age"));
             return user;
         };
         return userRowMapper;
@@ -36,15 +35,15 @@ public class UserRepository {
     }
 
     public User save(User user) {
-        jdbcTemplate.update(userSQLQueryConfig.getInsert(), user.getFirstName(), user.getLastName());
+        jdbcTemplate.update(userSQLQueryConfig.getInsert(), user.getName(), user.getAge());
         return user;
     }
 
-    public void update(User user) {
-        jdbcTemplate.update(userSQLQueryConfig.getUpdate(), user.getFirstName(), user.getLastName(), user.getId());
+    public boolean update(User user) {
+        return jdbcTemplate.update(userSQLQueryConfig.getUpdate(), user.getName(), user.getAge(), user.getId()) == 1;
     }
 
-    public void deleteById(int id) {
-        jdbcTemplate.update(userSQLQueryConfig.getDelete(), id);
+    public boolean deleteById(int id) {
+        return jdbcTemplate.update(userSQLQueryConfig.getDelete(), id) == 1;
     }
 }
