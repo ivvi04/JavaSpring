@@ -130,7 +130,7 @@ calculateAverageAge (Подсказка @GetMapping("/calc"))
 - public ResponseEntity addUserToProject(Long userId, Long projectId) - метод, обрабатывающий POST-запрос для добавления пользователя к проекту
 - public ResponseEntity removeUserFromProject(Long userId, Long projectId) - метод, обрабатывающий POST-запрос для удаления пользователя из проекта
 
-Урок 6. Проектирование и реализация API для серверного приложения
+## Урок 6. Проектирование и реализация API для серверного приложения
 
 **[Задание](https://github.com/ivvi04/JavaSpring/tree/master/lesson6)**
 
