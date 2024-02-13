@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Персонажи "Рик и Морти"</title>
+</head>
+<body>
+<div class="characters-container">
+    <div th:each="character : ${characters}" class="characters-card">
+        <div class="characters-details">
+            <a class="characters-name" th:href="@{/character/{id}(id=${character.id})}" th:text="${character.name}"></a>
+        </div>
+        <div class="characters-image">
+            <img th:src="${character.image}"/>
+        </div>
+    </div>
+</div>
+<div class="button-container">
+    <a th:href="@{/character}" class="button">В Начало</a>
+    <a th:if="${prevPage}" th:href="@{/character(page=${prevPage})}" class="button">Назад</a>
+    <a th:if="${nextPage}" th:href="@{/character(page=${nextPage})}" class="button">Вперед</a>
+</div>
+</body>
+</html>
+

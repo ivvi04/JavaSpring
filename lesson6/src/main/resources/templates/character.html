@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title th:text="${pageTitle}"></title>
+</head>
+<body>
+<div class="character-container">
+    <div th:if="${character != null}" class="character-card">
+        <div class="character-image">
+            <img th:src="${character.image}"/>
+        </div>
+        <div class="character-details">
+            <p>Name: <span th:text="${character.name}"></span></p>
+            <p>Status: <span th:text="${character.status}"></span></p>
+            <p>Species: <span th:text="${character.species}"></span></p>
+            <p>Type: <span th:text="${character.type}"></span></p>
+            <p>Gender: <span th:text="${character.gender}"></span></p>
+            <p>Url: <a th:href="${character.url}"><span th:text="${character.url}"></span></a></p>
+            <p>Created: <span th:text="${character.created}"></span></p>
+        </div>
+    </div>
+    <div th:if="${character == null}">
+        <p>Персонаж не найден</p>
+    </div>
+</div>
+<div class="button-container">
+    <a th:href="@{/character(page=${prevPage})}" class="button">Назад</a>
+    <a th:href="@{/character}" class="button">В Начало</a>
+</div>
+</body>
+</html>
