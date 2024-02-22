@@ -99,9 +99,6 @@ public class DeviceController {
 		return "device-authorize";
 	}
 
-	/**
-	 * @see #handleError(OAuth2AuthorizationException)
-	 */
 	@PostMapping("/device_authorize")
 	public ResponseEntity<Void> poll(@RequestParam(OAuth2ParameterNames.DEVICE_CODE) String deviceCode,
 			@RegisteredOAuth2AuthorizedClient("reg-client-device-code")

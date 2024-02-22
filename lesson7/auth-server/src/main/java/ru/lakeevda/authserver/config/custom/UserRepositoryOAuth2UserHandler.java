@@ -11,10 +11,7 @@ public final class UserRepositoryOAuth2UserHandler implements Consumer<OAuth2Use
 
 	@Override
 	public void accept(OAuth2User user) {
-		if (this.userRepository.findByName(user.getName()) == null) {
-			System.out.println("Saving first-time user: name=" + user.getName() + ", claims=" + user.getAttributes() + ", authorities=" + user.getAuthorities());
-			this.userRepository.save(user);
-		}
+		if (this.userRepository.findByName(user.getName()) == null) this.userRepository.save(user);
 	}
 
 	static class UserRepository {
