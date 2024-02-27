@@ -1,0 +1,66 @@
+server:
+  port: 8088
+
+#url, куда будет происходить регистрация микросервисов и другие важные действия
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+springdoc:
+  packagesToScan: ru.lakeevda.shopclient
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          payment:
+            url: http://localhost:8765/payment-service
+          storage:
+            url: http://localhost:8765/product-service
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10000
+    instances:
+      shop-client:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
+  retry:
+    instances:
+      serviceRetry:
+        max-attempts: 5
+        wait-duration: 10s
+  ratelimiter:
+    instances:
+      serviceRetry:
+        register-health-indicator: false
+        limit-for-period: 10
+        limit-refresh-period: 10s
+        timeout-duration: 3s
+
+shop:
+  account:
+    number: 3
