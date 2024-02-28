@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.lakeevda.productservice.exception.ExcessAmountException;
+import ru.lakeevda.productservice.exception.QuantityLessThanZeroException;
 import ru.lakeevda.productservice.exception.ResourceNotFoundException;
 
 @RestControllerAdvice
 public class AdviceController {
-
     @ExceptionHandler(ExcessAmountException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String excessAmount(ExcessAmountException e){
@@ -19,6 +19,12 @@ public class AdviceController {
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String resourceNotFound(ResourceNotFoundException e){
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(QuantityLessThanZeroException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String resourceNotFound(QuantityLessThanZeroException e){
         return e.getMessage();
     }
 }

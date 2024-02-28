@@ -39,7 +39,6 @@ public class ShopService {
                 .filter(prod -> prod.getId().equals(productId))
                 .findFirst()
                 .orElse(null);
-        if (amount <= 0) throw new RuntimeException("Количество должно быть больше 0!");
         BigDecimal sum = product.getPrice().multiply(new BigDecimal(amount));
 
         ResponseEntity<?> response = productReserve(productId, amount);

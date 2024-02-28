@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.lakeevda.productservice.entity.Product;
 import ru.lakeevda.productservice.exception.ExcessAmountException;
+import ru.lakeevda.productservice.exception.QuantityLessThanZeroException;
 import ru.lakeevda.productservice.exception.ResourceNotFoundException;
 import ru.lakeevda.productservice.repository.ProductRepository;
 
@@ -28,6 +29,7 @@ public class ProductService {
 
     @Transactional
     public void reduceAmount(Long id, int amount) throws RuntimeException {
+        if (amount <= 0) throw new QuantityLessThanZeroException("Количество должно быть больше 0!");
         Product product = getProductById(id);
         if (amount > product.getAmount())
             throw new ExcessAmountException("Заказ превышает остаток на складе!");
@@ -38,6 +40,7 @@ public class ProductService {
 
     @Transactional
     public void reservedProduct(Long id, int amount) throws RuntimeException {
+        if (amount <= 0) throw new QuantityLessThanZeroException("Количество должно быть больше 0!");
         Product product = getProductById(id);
         if (amount > product.getAmount())
             throw new ExcessAmountException("Заказ превышает остаток на складе!");
@@ -47,6 +50,7 @@ public class ProductService {
 
     @Transactional
     public void rollbackReservedProduct(Long id, int amount){
+        if (amount <= 0) throw new QuantityLessThanZeroException("Количество должно быть больше 0!");
         Product product = getProductById(id);
         product.setReserved(product.getReserved() - amount);
         productRepository.save(product);
