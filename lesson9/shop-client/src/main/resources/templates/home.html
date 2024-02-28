@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Магазин</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css" th:href="@{/webjars/bootstrap/css/bootstrap.css}" />
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center">Магазин</h1>
+
+  <div th:if="${message != null}" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Ошибка!</strong> <span th:text="${message}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div th:if="${confirm != null}" class="alert alert-success alert-dismissible fade show" role="alert">
+    <span th:text="${confirm}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4" th:each="product: ${products}">
+      <div class="card">
+        <img th:src="'data:image/jpeg;base64,' + ${product.imageString}" class="card-img-top product-image" alt="Product Image">
+        <div class="card-body">
+          <h5 class="card-title text-center" th:text="${product.name}"></h5>
+          <h6 class="text-center"><span>Цена: </span><span th:text="${product.price}"></span><span> руб.</span></h6>
+          <form th:action="@{/buy/{id}(id=${product.id})}" method="post" class="d-flex">
+            <div class="form-group flex-grow-1">
+              <input type="number" class="form-control" id="quantity" name="amount" placeholder="Количество" required min="0">
+            </div>
+            <button type="submit" class="btn btn-primary ms-2">Купить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script src="/webjars/jquery/jquery.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script src="/webjars/popper.js/umd/popper.js" th:src="@{/webjars/popper.js/umd/popper.js}"></script>
+</html>

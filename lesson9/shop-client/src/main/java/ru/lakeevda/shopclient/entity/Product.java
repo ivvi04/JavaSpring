@@ -1,20 +1,15 @@
-package ru.lakeevda.productservice.entity;
+package ru.lakeevda.shopclient.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
-@Entity
-@Table(name = "product")
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int amount;
     private BigDecimal price;
-    private int reserved;
     private byte[] image;
+    private String imageString;
 }
