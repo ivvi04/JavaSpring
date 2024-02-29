@@ -16,10 +16,10 @@ public interface ProductApi {
     @PostMapping("/{id}")
     ResponseEntity<?> bayProduct(@PathVariable Long id, @RequestParam int amount);
 
-    @PostMapping("/reserve/{id}")
+    @PostMapping("/{id}/reserved")
     ResponseEntity<?> reservedProduct(@PathVariable Long id, @RequestParam int amount);
 
-    @PostMapping("/reserve/{id}/rollback")
+    @PostMapping("/{id}/reserved/rollback")
     void reservedProductRollback(@PathVariable Long id, @RequestParam int amount);
 
 

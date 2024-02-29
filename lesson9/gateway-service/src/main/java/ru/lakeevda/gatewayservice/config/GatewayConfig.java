@@ -21,7 +21,6 @@ import java.util.List;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
-@Log
 @Configuration
 @RequiredArgsConstructor
 public class GatewayConfig {
@@ -35,7 +34,6 @@ public class GatewayConfig {
         assert definitions != null;
         definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
             String name = routeDefinition.getId().replaceAll("-service", "");
-            log.info(name);
             groups.add(GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build());
         });
         return groups;

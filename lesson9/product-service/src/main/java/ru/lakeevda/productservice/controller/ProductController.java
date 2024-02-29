@@ -19,26 +19,26 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.getAllProduct());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
         return ResponseEntity.ok().body(productService.getProductById(id));
     }
 
-    @PostMapping("{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Void> bayProduct(@PathVariable("id") Long id,
                                            @RequestParam int amount){
         productService.bayProduct(id, amount);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/reserve/{id}")
+    @PostMapping("/{id}/reserved")
     public ResponseEntity<Void> reservedProduct(@PathVariable("id") Long id,
                                                 @RequestParam int amount){
         productService.reservedProduct(id, amount);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("reserve/{id}/rollback")
+    @PostMapping("/{id}/reserved/rollback")
     public ResponseEntity<Void> reservedProductRollback(@PathVariable("id") Long id,
                                                         @RequestParam int amount){
         productService.reservedProductRollback(id, amount);

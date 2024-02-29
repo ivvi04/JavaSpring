@@ -76,7 +76,7 @@ class ProductControllerTest {
     void reservedProduct() throws Exception {
         when(productRepository.findById(product.getId())).thenReturn(Optional.of(product));
 
-        mockMvc.perform(post("/reserve/{id}", product.getId()).param("amount", "100"))
+        mockMvc.perform(post("/{id}/reserved", product.getId()).param("amount", "100"))
                 .andExpect(status().isOk());
 
         assertEquals(product.getReserved(), 100);
@@ -86,7 +86,7 @@ class ProductControllerTest {
     void reservedProductRollback() throws Exception {
         when(productRepository.findById(product.getId())).thenReturn(Optional.of(product));
 
-        mockMvc.perform(post("/reserve/{id}/rollback", product.getId()).param("amount", "100"))
+        mockMvc.perform(post("/{id}/reserved/rollback", product.getId()).param("amount", "100"))
                 .andExpect(status().isOk());
 
         assertEquals(product.getReserved(), -100);
