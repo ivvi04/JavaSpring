@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.lakeevda.paymentservice.entity.Account;
 
 @Repository
-public interface PaymentRepository extends JpaRepository<Account, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    Account findByNumber(Long creditNumber);
 }

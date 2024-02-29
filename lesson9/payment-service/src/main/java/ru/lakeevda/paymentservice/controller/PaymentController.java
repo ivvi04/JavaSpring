@@ -27,8 +27,8 @@ public class PaymentController {
     }
 
     @PostMapping("/rollback")
-    public ResponseEntity<Void> rollbackPayment(@RequestBody Payment payment){
-        paymentService.rollbackPayment(payment);
+    public ResponseEntity<Void> paymentRollback(@RequestBody Payment payment){
+        paymentService.paymentRollback(payment);
         return ResponseEntity.ok().build();
     }
 }

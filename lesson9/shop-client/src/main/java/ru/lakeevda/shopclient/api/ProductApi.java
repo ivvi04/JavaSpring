@@ -13,13 +13,14 @@ public interface ProductApi {
     @GetMapping
     List<Product> getProducts();
 
-    @PostMapping("/{id}/reserve")
-    ResponseEntity<?> reserveProduct(@PathVariable Long id, @RequestParam int amount);
-
-    @PostMapping("/{id}/reserve/rollback")
-    void rollbackReserve(@PathVariable Long id, @RequestParam int amount);
-
     @PostMapping("/{id}")
-    ResponseEntity<?> bay(@PathVariable Long id, @RequestParam int amount);
+    ResponseEntity<?> bayProduct(@PathVariable Long id, @RequestParam int amount);
+
+    @PostMapping("/reserve/{id}")
+    ResponseEntity<?> reservedProduct(@PathVariable Long id, @RequestParam int amount);
+
+    @PostMapping("/reserve/{id}/rollback")
+    void reservedProductRollback(@PathVariable Long id, @RequestParam int amount);
+
 
 }

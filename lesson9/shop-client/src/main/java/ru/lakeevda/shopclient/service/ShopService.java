@@ -43,45 +43,45 @@ public class ShopService {
 
         ResponseEntity<?> response = productReserve(productId, amount);
         if (response.getStatusCode().is2xxSuccessful()) {
-            response = payOrder(sum, 1L);
+            response = payment(sum, 1L);
             if (response.getStatusCode().is2xxSuccessful()) {
                 productBay(productId, amount);
             } else {
-                rollbackPayOrder(sum, 1L);
-                rollbackProductReserve(productId, amount);
+                paymentRollback(sum, 1L);
+                reservedProductRollback(productId, amount);
             }
         } else {
-            rollbackProductReserve(productId, amount);
+            reservedProductRollback(productId, amount);
         }
     }
 
     @Retry(name = "serviceRetry")
     private ResponseEntity<?> productReserve(Long id, int amount)
             throws HttpClientErrorException {
-        return productApi.reserveProduct(id, amount);
+        return productApi.reservedProduct(id, amount);
     }
 
     @Retry(name = "serviceRetry")
-    private void rollbackProductReserve(Long id, int amount)
+    private void reservedProductRollback(Long id, int amount)
             throws HttpClientErrorException {
-        productApi.rollbackReserve(id, amount);
+        productApi.reservedProductRollback(id, amount);
     }
 
     @Retry(name = "serviceRetry")
     private void productBay(Long id, int amount)
             throws HttpClientErrorException {
-        productApi.bay(id, amount);
+        productApi.bayProduct(id, amount);
     }
 
     @Retry(name = "serviceRetry")
-    private ResponseEntity<?> payOrder(BigDecimal sum, Long numberCredit)
+    private ResponseEntity<?> payment(BigDecimal sum, Long numberCredit)
             throws HttpClientErrorException {
         return paymentApi.payment(new Payment(numberCredit, Long.parseLong(shopAccount), sum));
     }
 
     @Retry(name = "serviceRetry")
-    private void rollbackPayOrder(BigDecimal sum, Long numberCredit)
+    private void paymentRollback(BigDecimal sum, Long numberCredit)
             throws HttpClientErrorException {
-        paymentApi.rollbackPayment(new Payment(numberCredit, Long.parseLong(shopAccount), sum));
+        paymentApi.paymentRollback(new Payment(numberCredit, Long.parseLong(shopAccount), sum));
     }
 }

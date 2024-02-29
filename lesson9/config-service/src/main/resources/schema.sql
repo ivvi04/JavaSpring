@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS account (
     id        BIGINT AUTO_INCREMENT PRIMARY KEY,
-    number    BIGINT NOT NULL UNIQUE,
+    name      VARCHAR(255) NOT NULL,
     balance   DECIMAL(12, 2)
 );
 
-INSERT INTO account (number, balance)
-VALUES (1, 100000),
-       (2, 50000),
-       (3, 0);
+INSERT INTO account (name, balance)
+VALUES ('Счет1', 100000),
+       ('Счет2', 50000),
+       ('Счет3', 0);
 
 CREATE TABLE IF NOT EXISTS product (
     id       BIGINT AUTO_INCREMENT PRIMARY KEY,

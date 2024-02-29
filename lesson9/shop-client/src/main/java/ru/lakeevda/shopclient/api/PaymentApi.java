@@ -13,6 +13,6 @@ public interface PaymentApi {
     ResponseEntity<?> payment(@RequestBody Payment payment);
 
     @PostMapping("/rollback")
-    void rollbackPayment(@RequestBody Payment payment);
+    void paymentRollback(@RequestBody Payment payment);
 
 }

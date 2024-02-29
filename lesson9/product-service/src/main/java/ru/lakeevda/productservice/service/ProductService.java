@@ -28,7 +28,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void reduceAmount(Long id, int amount) throws RuntimeException {
+    public void bayProduct(Long id, int amount) throws RuntimeException {
         if (amount <= 0) throw new QuantityLessThanZeroException("Количество должно быть больше 0!");
         Product product = getProductById(id);
         if (amount > product.getAmount())
@@ -49,7 +49,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void rollbackReservedProduct(Long id, int amount){
+    public void reservedProductRollback(Long id, int amount){
         if (amount <= 0) throw new QuantityLessThanZeroException("Количество должно быть больше 0!");
         Product product = getProductById(id);
         product.setReserved(product.getReserved() - amount);

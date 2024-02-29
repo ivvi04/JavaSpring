@@ -13,7 +13,6 @@ import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
-@Log
 public class ShopController {
 
     private final ShopService shopService;
@@ -50,7 +49,7 @@ public class ShopController {
     }
 
     @ExceptionHandler(RuntimeException.class)
-    public String errorPage(Principal principal, RuntimeException e, Model model){
+    public String errorPage(RuntimeException e, Model model){
         model.addAttribute("message", e.getLocalizedMessage());
         model.addAttribute("products", shopService.getProducts());
         return "home";
