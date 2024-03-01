@@ -1,10 +1,10 @@
-package ru.lakeevda.authserver;
+package ru.lakeevda.paymentservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AuthServerApplicationTests {
+class Lesson9PaymentServiceTests {
 
     @Test
     void contextLoads() {

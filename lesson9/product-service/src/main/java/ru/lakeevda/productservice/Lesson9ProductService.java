@@ -1,13 +1,13 @@
-package ru.lakeevda.resourceserver;
+package ru.lakeevda.productservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResourceServerApplication {
+public class Lesson9ProductService {
 
     public static void main(String[] args) {
-        SpringApplication.run(ResourceServerApplication.class, args);
+        SpringApplication.run(Lesson9ProductService.class, args);
     }
 
 }

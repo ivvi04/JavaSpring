@@ -1,10 +1,10 @@
-package ru.lakeevda.gatewayservice;
+package ru.lakeevda.shopclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayServiceApplicationTests {
+class Lesson9ShopClientTests {
 
     @Test
     void contextLoads() {

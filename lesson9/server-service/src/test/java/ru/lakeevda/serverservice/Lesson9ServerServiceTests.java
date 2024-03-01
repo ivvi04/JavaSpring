@@ -1,10 +1,10 @@
-package ru.lakeevda.clientserver;
+package ru.lakeevda.serverservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClientServerApplicationTests {
+class Lesson9ServerServiceTests {
 
     @Test
     void contextLoads() {

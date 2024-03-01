@@ -1,10 +1,10 @@
-package ru.lakeevda.paymentservice;
+package ru.lakeevda.configservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PaymentServiceApplicationTests {
+class Lesson9ConfigServiceTests {
 
     @Test
     void contextLoads() {

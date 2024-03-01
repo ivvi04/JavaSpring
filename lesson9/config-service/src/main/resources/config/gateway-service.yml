@@ -11,10 +11,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: metrics,prometheus,health
   endpoint:
     health:
       show-details: always
+    prometheus:
+      enabled: true
 
 #для корректной работы api gateway
 spring:

@@ -13,8 +13,8 @@ import ru.lakeevda.authserver.controller.AuthorizationConsentController;
 import java.util.Arrays;
 
 @SpringBootApplication
-@ImportRuntimeHints(AuthServerApplication.DemoAuthorizationServerApplicationRuntimeHintsRegistrar.class)
-public class AuthServerApplication {
+@ImportRuntimeHints(Lesson7AuthServer.DemoAuthorizationServerApplicationRuntimeHintsRegistrar.class)
+public class Lesson7AuthServer {
 
     static class DemoAuthorizationServerApplicationRuntimeHintsRegistrar implements RuntimeHintsRegistrar {
 
@@ -34,7 +34,7 @@ public class AuthServerApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthServerApplication.class, args);
+        SpringApplication.run(Lesson7AuthServer.class, args);
     }
 
 }

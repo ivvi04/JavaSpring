@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8081
 
 #url, куда будет происходить регистрация микросервисов и другие важные действия
 eureka:
@@ -14,17 +14,19 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: metrics,prometheus,health
   endpoint:
     health:
       show-details: always
+    prometheus:
+      enabled: true
 
 spring:
   h2:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:tcp://localhost:9090/mem:users
+    url: jdbc:h2:tcp://localhost:9091/mem:users
     driverClassName: org.h2.Driver
     username: root
     password: root

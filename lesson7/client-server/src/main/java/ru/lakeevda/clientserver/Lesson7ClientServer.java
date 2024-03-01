@@ -1,13 +1,13 @@
-package ru.lakeevda.productservice;
+package ru.lakeevda.clientserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductServiceApplication {
+public class Lesson7ClientServer {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductServiceApplication.class, args);
+        SpringApplication.run(Lesson7ClientServer.class, args);
     }
 
 }

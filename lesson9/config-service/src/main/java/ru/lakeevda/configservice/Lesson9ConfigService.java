@@ -10,14 +10,14 @@ import java.sql.SQLException;
 
 @EnableConfigServer
 @SpringBootApplication
-public class ConfigServiceApplication {
+public class Lesson9ConfigService {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigServiceApplication.class, args);
+        SpringApplication.run(Lesson9ConfigService.class, args);
     }
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Server inMemoryH2DatabaseaServer() throws SQLException {
-        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090");
+        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9091");
     }
 }
