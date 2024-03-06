@@ -210,3 +210,35 @@ ___
 **[Задание](https://github.com/ivvi04/JavaSpring/tree/master/lesson9)**
 
 Задание: Используйте Spring Actuator для отслеживания метрик вашего приложения. Настройте визуализацию этих метрик с использованием Prometheus и Grafana.
+
+## Урок 12. Паттерны проектирония и GoF паттерны в Spring приложении
+
+**[Задание](https://github.com/ivvi04/JavaSpring/tree/master/lesson12)**
+
+Задание:
+1) На базе первого примера разобранного на семинаре, добавить в один из проектов разработанных ранее spring Integration. 
+Сохранять запросы от пользователя в файл.
+2) Добавить в проект один из паттернов разобранных на лекции.
+
+Для проекта Kafka выполнить следующее (Для Windows):
+1) Установить [Apache Kafka](https://kafka.apache.org/downloads) и распаковать в любое место (Например: *C:\kafka*);
+2) В каталоге *C:\kafka\config* открыть *zookeeper.properties* и поменять **dataDir** (Например: *C:\\kafka\\zookeeper-data*);
+3) В этом же каталоге открыть *server.properties* и поменять **log.dirs** (Например: *C:\\kafka\\kafka-logs*);
+4) Запустить командную строку и перейти в каталог C:\kafka;
+5) Запустить zookeeper-server: `.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties`;
+6) Запустить новую командную строку и тоже перейти в каталог *C:\kafka*;
+7) Запустить kafka-server: `.\bin\windows\kafka-server-start.bat .\config\server.properties`.
+
+Для отслеживания сообщений на конкретном топике можно запустить еще одну командную строку, 
+также перейти в каталог C:\kafka и выполнить
+`.\bin\windows\kafka-console-consumer.bat --topic user-topic --bootstrap-server localhost:9092`
+
+Пример запроса:
+`localhost:8080/messages?msgid=12345433`
+
+Body:
+`{
+   "age": 34,
+   "name": "Denis",
+   "address": "dfdgdfgdfgghjhj"
+}`

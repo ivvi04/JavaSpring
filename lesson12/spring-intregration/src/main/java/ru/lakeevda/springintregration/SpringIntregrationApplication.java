@@ -1,13 +1,13 @@
-package ru.lakeevda.lesson3;
+package ru.lakeevda.springintregration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Lesson3Application {
+public class SpringIntregrationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Lesson3Application.class, args);
+        SpringApplication.run(SpringIntregrationApplication.class, args);
     }
 
 }
